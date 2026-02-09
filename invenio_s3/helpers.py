@@ -100,6 +100,6 @@ def redirect_stream(
             rv.cache_control.max_age = cache_timeout
             rv.expires = int(time() + cache_timeout)
     else:
-        rv.cache_control.no-cache = True
+        rv.cache_control.no_cache = True
 
     return rv
