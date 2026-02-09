@@ -99,5 +99,7 @@ def redirect_stream(
         if cache_timeout is not None:
             rv.cache_control.max_age = cache_timeout
             rv.expires = int(time() + cache_timeout)
+    else:
+        rv.cache_control.private = True
 
     return rv
