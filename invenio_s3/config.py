@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2018, 2019, 2020 Esteban J. G. Gabancho.
-#
-# Invenio-S3 is free software; you can redistribute it and/or modify it
-# under the terms of the MIT License; see LICENSE file for more details.
+# SPDX-FileCopyrightText: 2018, 2019, 2020 Esteban J. G. Gabancho.
+# SPDX-License-Identifier: MIT
 """S3 file storage support for Invenio."""
 
 S3_ENDPOINT_URL = None
@@ -26,6 +22,16 @@ This is entirely optional, and if not provided, the region name will be
 automatically set to 'us-east-1'.
 
 If set to a value it will be passed as ``region_name`` to boto3 `client
+<https://boto3.readthedocs.io/en/latest/reference/core/session.html#boto3.session.Session.client>`_.
+"""
+
+S3_CA_BUNDLE = None
+"""Path to a CA certificate bundle used to verify the S3 server's SSL certificate.
+
+Useful when the S3 server uses a certificate signed by a private or internal
+certificate authority. If not set, the default CA bundle is used.
+
+If set to a value it will be passed as ``verify`` to boto3 `client
 <https://boto3.readthedocs.io/en/latest/reference/core/session.html#boto3.session.Session.client>`_.
 """
 
@@ -94,5 +100,20 @@ to allow large file uploads with large number of chunks to be completed. This is
 currently the maximum allowed by the AWS.
 See `Amazon Boto3 documentation on presigned URLs
 <https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.generate_presigned_url>`_
+for more information.
+"""
+
+S3_BUCKET_CORS_RULES = [
+    {
+        "AllowedHeaders": [],
+        "AllowedMethods": ["GET"],
+        "AllowedOrigins": ["*"],
+        "ExposeHeaders": [],
+    }
+]
+"""CORS rules applied to buckets created with ``invenio s3 create-bucket``.
+Set to an empty list to skip setting a CORS configuration.
+See `Amazon S3 CORS configuration
+<https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManageCorsUsing.html>`_
 for more information.
 """

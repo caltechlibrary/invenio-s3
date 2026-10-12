@@ -1,10 +1,6 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2018, 2019 Esteban J. G. Gabancho.
-# Copyright (C) 2024 KTH Royal Institute of Technology.
-#
-# Invenio-S3 is free software; you can redistribute it and/or modify it
-# under the terms of the MIT License; see LICENSE file for more details.
+# SPDX-FileCopyrightText: 2018, 2019 Esteban J. G. Gabancho.
+# SPDX-FileCopyrightText: 2024 KTH Royal Institute of Technology.
+# SPDX-License-Identifier: MIT
 """S3 file storage support for Invenio."""
 
 from flask import current_app
@@ -47,6 +43,10 @@ class InvenioS3(object):
         region_name = current_app.config.get("S3_REGION_NAME", None)
         if region_name:
             info["client_kwargs"]["region_name"] = region_name
+
+        ca_bundle = current_app.config.get("S3_CA_BUNDLE", None)
+        if ca_bundle:
+            info["client_kwargs"]["verify"] = ca_bundle
 
         return info
 

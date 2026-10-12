@@ -1,11 +1,8 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2018, 2019, 2020 Esteban J. G. Gabancho.
-# Copyright (C) 2024 KTH Royal Institute of Technology.
-# Copyright (C) 2024 Graz University of Technology.
-#
-# Invenio-S3 is free software; you can redistribute it and/or modify it
-# under the terms of the MIT License; see LICENSE file for more details.
+# SPDX-FileCopyrightText: 2018, 2019, 2020 Esteban J. G. Gabancho.
+# SPDX-FileCopyrightText: 2024-2026 KTH Royal Institute of Technology.
+# SPDX-FileCopyrightText: 2024-2026 Graz University of Technology.
+# SPDX-FileCopyrightText: 2026 TU Wien.
+# SPDX-License-Identifier: MIT
 
 """S3 file storage support for Invenio.
 
@@ -34,19 +31,21 @@ more detailed description in :any:`configuration`.
 .. note::
 
   This module doesn't create S3 buckets automatically, so before starting they
-  need to be created.
+  need to be created, e.g. with ``invenio s3 create-bucket my-bucket``.
 
   You might also want to set the correct `CORS configuration
   <https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html>`_  so files can
   be used by your interface for things like previewing a PDF with some
-  Javascript library.
+  Javascript library. Buckets created with ``invenio s3 create-bucket`` get
+  the CORS rules from ``S3_BUCKET_CORS_RULES``, which by default allow ``GET``
+  requests from any origin.
 
 """
 
 from .ext import InvenioS3
 from .storage import S3FSFileStorage, s3fs_storage_factory
 
-__version__ = "3.0.2"
+__version__ = "6.1.0"
 
 __all__ = (
     "__version__",

@@ -1,11 +1,47 @@
 ..
-    Copyright (C) 2018, 2019, 2020 Esteban J. G. Gabancho.
-    Copyright (C) 2024 Graz University of Technology.
-    Invenio-S3 is free software; you can redistribute it and/or modify it
-    under the terms of the MIT License; see LICENSE file for more details.
+    SPDX-FileCopyrightText: 2018, 2019, 2020 Esteban J. G. Gabancho.
+    SPDX-FileCopyrightText: 2024-2026 Graz University of Technology.
+    SPDX-FileCopyrightText: 2026 TU Wien.
+    SPDX-FileCopyrightText: 2026 KTH Royal Institute of Technology.
+    SPDX-License-Identifier: MIT
 
 Changes
 =======
+
+Version v6.1.0 (released 2026-10-12)
+
+- feat: add cli to create S3 buckets and cert bundle config
+
+Version v6.0.3 (released 2026-09-17)
+
+- fix(tests): changed minio to rustfs
+
+Version v6.0.2 (released 2026-07-17)
+
+- fix: add cache-control for s3 presigned urls
+- fix(cache): mark restricted files as no-cache for cache-control
+
+Version v6.0.1 (released 2026-07-16)
+
+- tests: added duplicated multipart abort test
+- revert: removed multipart_upload_exists
+- fix: handle NoSuchUpload gracefully when aborting multipart upload
+- chore(setup): migrate from setuptools to hatchling
+- chore(cleanup): remove outdated and unnecessary file
+
+Version v6.0.0 (released 2026-06-16)
+
+- chore(setup): bump dependencies
+- chore(git-blame): ignore the SPDX license header commit
+- chore(licenses): update license headers to use SPDX
+
+Version v5.0.0 (released 2026-05-28)
+
+- chore(setup): bump dependencies
+
+Version v4.0.0 (released 2026-01-29)
+
+- chore(setup): bump dependencies
 
 Version 3.0.2 (released 2025-08-04)
 

@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
-# -*- coding: utf-8 -*-
-#
-# This file is part of Invenio.
-# Copyright (C) 2018-2020 CERN.
-# Copyright (C) 2022 Graz University of Technology.
-#
-# Invenio is free software; you can redistribute it and/or modify it
-# under the terms of the MIT License; see LICENSE file for more details.
+# SPDX-FileCopyrightText: 2018-2020 CERN.
+# SPDX-FileCopyrightText: 2022 Graz University of Technology.
+# SPDX-License-Identifier: MIT
 
 # Usage:
 #   ./run-tests.sh [pytest options and args...]
@@ -44,9 +39,8 @@ if [[ ${keep_services} -eq 0 ]]; then
 	trap cleanup EXIT
 fi
 
-python -m check_manifest
 python -m sphinx.cmd.build -qnNW docs docs/_build/html
-eval "$(docker-services-cli up --s3 ${S3:-minio} --env)"
+eval "$(docker-services-cli up --s3 ${S3:-rustfs} --env)"
 python -m pytest -k "not manual" ${pytest_args[@]+"${pytest_args[@]}"}
 tests_exit_code=$?
 exit "$tests_exit_code"
